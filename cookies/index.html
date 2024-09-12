@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cookies Login Page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section id="main">
+      <div id="header">
+        <button class="btn" id="myProfileBtn" onclick="RedirectProfile()">MY PROFILE</button>
+      </div>
+      <div id="page">
+        <h2>SIGNIN</h2>
+      </div>
+      <!-- Form -->
+      <form action="userlogin" method="post">
+        <div class="data">
+          <label for="email" class="label">Email</label><br>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            class="inputField"
+			placeholder="abc@gmail.com"
+            required
+          />
+        </div>
+        <div class="data">
+          <label for="password" class="label">Password</label><br>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="inputField"
+			placeholder="XXXXX"
+            required
+          />
+        </div>
+        <div class="data" id="submitBtn">
+          <input type="submit" name="submit" id="submit" value="Signin" />
+        </div>
+      </form>
+    </section>
+	<script src="app.js"></script>
+  </body>
+</html>

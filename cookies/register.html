@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cookies Login Page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section id="main">
+      <div id="page">
+        <h2>SIGNUP</h2>
+      </div>
+<!-- Form -->
+      <form action="register" method="post">
+<!-- Name -->
+	  <div class="data">
+          <label for="name" class="label">Name</label><br>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="inputField"
+			placeholder="Sara"
+          />
+		  <span class="error" id="nameError">Please Enter valid Name</span>
+        </div>
+<!-- Email Id -->
+        <div class="data">
+          <label for="email" class="label">Email</label><br>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            class="inputField"
+			placeholder="abc@gmail.com"
+          />
+		  <span class="error" id="emailError">Please Enter valid Email</span>
+        </div>
+<!-- Phone Number -->
+		<div class="data">
+          <label for="phoneNo" class="label">Phone Number</label><br>
+          <input
+            type="text"
+            name="phoneNo"
+            id="phoneNo"
+            class="inputField"
+			placeholder="1234567890"
+          />
+		  <span class="error" id="phoneNoError">Please Enter valid PhoneNumber</span>
+        </div>
+<!-- Gender -->
+		<div class="data">
+          <label for="female" class="label">Gender</label><br>
+		  <div class="inner_section" id="gender">
+          <input
+            type="radio"
+            name="gender"
+            id="female"
+			value="female"
+			checked
+          /><label for="female">Female</label><br>
+		  <input
+            type="radio"
+            name="gender"
+            id="male"
+			value="male"
+          /><label for="male">Male</label><br>
+		  <input
+            type="radio"
+            name="gender"
+            id="others"
+			value="others"
+          /><label for="others">Others</label><br>
+		  </div>
+        </div>
+<!-- Hobbies -->
+		<div class="data">
+          <label class="label">Hobbies</label><br>
+		  <div class="inner_section">
+          <input
+            type="checkbox"
+            name="hobbies[]"
+            id="drawing"
+			class = "hobbies"
+			value="drawing"
+          /><label for="drawing">Drawing</label><br>
+		  <input
+            type="checkbox"
+            name="hobbies[]"
+            id="reading"
+			class = "hobbies"
+			value="reading"
+          /><label for="reading">Reading</label><br>
+		 <input
+            type="checkbox"
+            name="hobbies[]"
+            id="playing"
+			class = "hobbies"
+			value="playing"
+          /><label for="playing">Playing</label><br>
+		  </div>
+        </div>
+<!-- Address -->
+		<div class="data">
+          <label for="female" class="label">Address</label><br>
+		  <div class="inner_section">
+          <label for="doorNo">Door No</label><br>
+		  <input
+            type="text"
+            name="doorNo"
+            id="doorNo"
+			class="input"
+			placeholder="12N/23"
+          /><br>
+		  <span class="error" id="doorNoError">Please Enter valid DoorNo</span><br>
+		  <label for="city">City</label><br>
+		  <select name="city" id = "city"> 
+			<option value="tenkasi">Tenkasi</option>
+			<option value="tirunelveli">Tirunelveli</option>
+			<option value="madurai">Madurai</option>
+			<option value="chennai">Chennai</option>
+		  </select>
+		  </div>
+        </div>
+<!-- Password -->
+        <div class="data">
+          <label for="password" class="label">Password</label><br>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="inputField"
+			placeholder="XXXXX"
+          />
+		  <span class="error" id="passwordError">
+			<ul style="list-style: none">
+				<li>*Atleast One Lowercase Letter</li>
+				<li>*Atleast one UpperCase Letter</li>
+				<li>*Atleast one Digit</li>
+				<li>*Atleast one Special character (!@#$%^&*()\-+.)</li>
+				<li>*Must contain 6 Character</li>
+			</ul>
+		</span>
+        </div>
+<!-- Submit -->
+        <div class="data" id="submitBtn">
+          <input type="submit" name="submit" id="submit" value="Signin" onclick="userRegisteration()"/>
+        </div>
+<!-- Login -->
+		<div class = "data" style = "text-align: center">
+			<span>If you already Signup, Then</span>
+			<a href = "index.html">SignIn</a>
+		</div>
+      </form>
+    </section>
+<!-- Script -->
+	<script>
+	<!-- Name -->
+		let name = document.getElementById("name");
+		name.addEventListener("input", () => {
+			let nameRegEx = /^[A-Za-z]+\.?(\s?[A-Za-z])*\.?[A-Za-z]?$/;  
+			if(nameRegEx.test(name.value)){
+				document.getElementById("nameError").style.display="none";
+			}else{
+				document.getElementById("nameError").style.display="block";
+			}
+		});
+	<!-- Email -->
+		let email = document.getElementById("email");
+		email.addEventListener("input", () => {
+		<!-- Check if the Name field is Empty or not -->
+			let userName = document.getElementById("name").value;
+			if(userName == null || userName.length == 0){
+				document.getElementById("name").focus();
+			}
+			
+			let emailRegEx = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+			if(emailRegEx.test(email.value)){
+				document.getElementById("emailError").style.display = "none";
+			}else{
+				document.getElementById("emailError").style.display = "block";
+			}
+		});
+	<!-- Phone Number -->
+		let phoneNo = document.getElementById("phoneNo");
+		phoneNo.addEventListener("input", () => {
+		<!-- Check if the Email field is Empty or not -->
+			let userEmail = document.getElementById("email").value;
+			if(userEmail == null || userEmail.length == 0){
+				document.getElementById("email").focus();
+			}
+			
+			let phoneNoRegEx = /^[0-9]{10}$/;
+			if(phoneNoRegEx.test(phoneNo.value)){
+				document.getElementById("phoneNoError").style.display = "none";
+			}else{
+				document.getElementById("phoneNoError").style.display = "block";
+			}
+		});
+	<!-- Door Number -->
+		let doorNo = document.getElementById("doorNo");
+		doorNo.addEventListener("input", () => {
+		<!-- Check if the phoneNo field is Empty or Not -->
+			let userPhoneNo = document.getElementById("phoneNo").value;
+			if(userPhoneNo == null || userPhoneNo.length == 0){
+				document.getElementById("phoneNo").focus();
+			}
+			
+		let doorNoRegEx = /^[0-9]{1,3} ?\w?\/?[0-9]{1,3} ?\w?$/;
+		if(doorNoRegEx.test(doorNo.value)){
+			document.getElementById("doorNoError").style.display = "none";
+		}else{
+			document.getElementById("doorNoError").style.display = "block";
+		}
+		});
+	<!-- Password -->
+		let password = document.getElementById("password");
+		password.addEventListener("input", () => {
+		<!-- Check if the doorNo field is Empty or Not -->
+			let userDoorNo = document.getElementById("doorNo").value;
+			if(userDoorNo == null || userDoorNo.length == 0){
+				document.getElementById("doorNo").focus();
+			}
+			
+		let passwordRegEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-+.]).{6,20}$/;
+		if(passwordRegEx.test(password.value)){
+			document.getElementById("passwordError").style.display = "none";
+		}else{
+			document.getElementById("passwordError").style.display = "block";
+		}
+		});
+		
+//Register
+	function userRegisteration(){
+	//Check if the Password field is Empty or not
+		let userPassword = document.getElementById("password").value;
+		if(userPassword == null || userPassword.length == 0){
+			document.getElementById("password").focus();
+		}
+	
+	let name = document.getElementById("name").value;
+	let email = document.getElementById("email").value;
+	let phoneNo = document.getElementById("phoneNo").value;
+//Gender(Radio Button)
+	let gender = document.getElementsByName("gender");
+	let Gender;
+	for (let g of gender) {
+		if (g.checked) {
+			Gender = g.value;
+			break;
+		}
+	}
+//Hobbies(Checkbox)
+	var checkedValue = []; let id = 0;
+	var hobbies = document.getElementsByClassName('hobbies');
+	for(let h of hobbies){
+		if(h.checked){
+			checkedValue[id++] = h.value;
+		}
+	}
+	let doorNo = document.getElementById("doorNo").value;
+	let city = document.getElementById("city").value;
+	let password = document.getElementById("password").value;
+	
+	
+	console.log("Name: " + name);
+	console.log("Email: " + email);
+	console.log("phoneNo: " + phoneNo);
+	console.log("Gender: " + Gender);
+	console.log("hobbies: " + checkedValue);
+	console.log("doorNo: " + doorNo);
+	console.log("city: " + city);
+	console.log("password: " + password);
+}
+	</script>
+  </body>
+</html>
